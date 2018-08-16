@@ -1,0 +1,26 @@
+{
+  "name": "backend-service",
+  "version": "1.0.0",
+  "description": "Backend service for https://mediaparty2018.sched.com/event/Fzbc/herramientas-de-ia-para-redacciones-modernas",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "workshop",
+    "media",
+    "party",
+    "2018",
+    "herramientas",
+    "redacciones",
+    "modernas"
+  ],
+  "author": "Alejandro Cena",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/language": "^1.2.0",
+    "@google-cloud/vision": "^0.21.0",
+    "nconf": "^0.10.0",
+    "restify": "^7.2.1"
+  }
+}
