@@ -31,6 +31,12 @@ if (module === require.main) {
   // Start the server
   server.listen( config.get('PORT'), function () {
     console.log(server.name + ' listening at ' + server.url);
+    const routes = server.router._registry._routes;
+    for (let p in routes) {
+      if( routes.hasOwnProperty(p) ) {
+        console.log(routes[p].method + "::" + routes[p].path + " - " + routes[p].name);
+      }
+    }
   });
 }
 

@@ -1,3 +1,6 @@
+const assert = require('assert');
+const language = require('../content/language');
+
 function endpoints(server) {
   console.log('Entity Endpoint Loaded');
   
@@ -6,7 +9,14 @@ function endpoints(server) {
    * Gets Content entity extraction
    */
   server.post('/content/entity/extract', async function (req, res, next) {
-    res.send(200, ['Cristina Fernandez de Kirchner','Bonadio']);
+    const text = req.body.text;
+    assert.ok(text.length>0,'No title');
+  
+    try {
+      res.send(200, await language.analyzeEntitiesOfText(text));
+    } catch (err) {
+      res.send(500, err);
+    }
     return next()
   });
   
