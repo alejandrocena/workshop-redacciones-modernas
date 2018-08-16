@@ -20,6 +20,21 @@ function endpoints(server) {
     return next()
   });
   
+  /**
+   * Gets Content entity sentiment
+   */
+  server.post('/content/entity/sentiment', async function (req, res, next) {
+    const text = req.body.text;
+    assert.ok(text.length>0,'No title');
+    
+    try {
+      res.send(200, await language.analyzeEntitiesOfText(text));
+    } catch (err) {
+      res.send(500, err);
+    }
+    return next()
+  });
+  
 }
 
 module.exports = endpoints;

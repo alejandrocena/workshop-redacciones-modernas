@@ -158,19 +158,14 @@ function classifyTextOfText(text) {
   // Creates a client
   const client = new language.LanguageServiceClient();
   
-  /**
-   * TODO(developer): Uncomment the following line to run this code.
-   */
-    // const text = 'Your text to analyze, e.g. Hello, world!';
-    
-    // Prepares a document, representing the provided text
+  // Prepares a document, representing the provided text
   const document = {
       content: text,
       type: 'PLAIN_TEXT',
     };
   
   // Classifies text in the document
-  client
+  return client
     .classifyText({document: document})
     .then(results => {
       const classification = results[0];
@@ -181,6 +176,7 @@ function classifyTextOfText(text) {
           `Name: ${category.name}, Confidence: ${category.confidence}`
         );
       });
+      return classification;
     })
     .catch(err => {
       console.error('ERROR:', err);
