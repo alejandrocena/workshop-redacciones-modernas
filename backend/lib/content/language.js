@@ -131,7 +131,7 @@ function analyzeEntitySentimentOfText(text) {
     };
   
   // Detects sentiment of entities in the document
-  client
+  return client
     .analyzeEntitySentiment({document: document})
     .then(results => {
       const entities = results[0].entities;
@@ -143,6 +143,7 @@ function analyzeEntitySentimentOfText(text) {
         console.log(`  Score: ${entity.sentiment.score}`);
         console.log(`  Magnitude: ${entity.sentiment.magnitude}`);
       });
+      return entities;
     })
     .catch(err => {
       console.error('ERROR:', err);

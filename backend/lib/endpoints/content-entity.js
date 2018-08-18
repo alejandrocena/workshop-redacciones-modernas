@@ -28,7 +28,7 @@ function endpoints(server) {
     assert.ok(text.length>0,'No title');
     
     try {
-      res.send(200, await language.analyzeEntitiesOfText(text));
+      res.send(200, await language.analyzeEntitySentimentOfText(text));
     } catch (err) {
       res.send(500, err);
     }

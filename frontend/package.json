@@ -1,0 +1,33 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend Service for https://mediaparty2018.sched.com/event/Fzbc/herramientas-de-ia-para-redacciones-modernas",
+  "main": "server.js",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "react": "^16.4.2",
+    "react-bootstrap-modal": "^4.1.1",
+    "react-dom": "^16.4.2",
+    "react-loader-spinner": "^2.1.0",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "keywords": [
+    "workshop",
+    "media",
+    "party",
+    "2018",
+    "herramientas",
+    "redacciones",
+    "modernas",
+    "frontend"
+  ],
+  "author": "Alejandro Cena",
+  "license": "ISC"
+}
