@@ -49,7 +49,7 @@ class WorkshopEditor extends Component {
           <h3>Workshop Editor</h3>
         </div>
         <div className="row">
-          <div className="col-sm">
+          <div className="col-sm" >
             {
               post && meta && preview ?
                 <Preview post={post} meta={meta} />
