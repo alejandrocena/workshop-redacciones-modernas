@@ -1,36 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class PostEditor extends Component {
-  
-  constructor(props){
-    super(props);
-    this.handleTitleChanged.bind(this);
-    this.handleDroplineChanged.bind(this);
-    this.handleBodyChanged.bind(this);
-  }
-  
-  handleTitleChanged = (title) => {
-    const {onChange = ()=>{}} = this.props;
-    this.setState({title});
-    onChange(this.state);
-  };
-  
-  handleDroplineChanged = (dropline) => {
-    const {onChange = ()=>{}} = this.props;
-    this.setState({dropline});
-    onChange(this.state);
-  };
-  
-  handleBodyChanged = (paragraphs) => {
-    const {onChange = ()=>{}} = this.props;
-    this.setState({paragraphs});
-    onChange(this.state);
-  };
-  
-  render() {
-    const {post={}} = this.props;
+const PostEditor = (props)=>{
+    const {post,onChange} = props;
     const {title,dropline,paragraphs=[]} = post;
-  
+    
+    
     return (
       <form>
         <div className="form-group">
@@ -40,7 +14,7 @@ class PostEditor extends Component {
             className="form-control"
             id="title"
             placeholder="Enter title"
-            onChange={(event) => this.handleTitleChanged(event.target.value)}
+            onChange={(event) => onChange({title:event.target.value,dropline,paragraphs})}
             value={title}
           />
         </div>
@@ -51,7 +25,7 @@ class PostEditor extends Component {
             className="form-control"
             id="dropline"
             placeholder="Enter Dropline"
-            onChange={(event) => this.handleDroplineChanged(event.target.value)}
+            onChange={(event) => onChange({title,dropline:event.target.value,paragraphs})}
             value={dropline}
           />
         </div>
@@ -61,13 +35,13 @@ class PostEditor extends Component {
             id="body"
             className="form-control"
             placeholder="Enter Body"
-            onChange={(event) => this.handleBodyChanged(event.target.value.split('/n'))}
-            value={paragraphs.join('/n')}
+            onChange={(event) => onChange({title,dropline,paragraphs:event.target.value.split('\n')})}
+            value={paragraphs.join('\n')}
+            style={{height:'200px'}}
           />
         </div>
       </form>
     );
-  }
 }
 
 export default PostEditor;

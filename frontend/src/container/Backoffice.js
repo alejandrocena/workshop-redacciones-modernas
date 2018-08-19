@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {doProcess} from '../lib/process';
 import MetaPanel from "../component/MetaPanel";
+import ExamplesComponent from "../component/Examples";
 import EditorContainer from './Editor';
 import Preview from "../component/Preview";
 const Modal = require('react-bootstrap-modal');
@@ -21,40 +22,48 @@ class WorkshopEditor extends Component {
       preview:false
     };
     this.handlePostPublish.bind(this);
+    this.handleExampleSelected.bind(this);
+    this.handlePostChanged.bind(this);
   }
   
   handlePostPublish = async (post) => {
     this.setState({post,loading:true,message:'loading'});
     try {
-      const meta = await doProcess(
-        post,
-        (message) => {
-          this.setState({message})
-        }
-      );
-      this.setState({meta,loading:false,message:''});
-      console.log(meta);
+      const messageHandler = (message) => {
+        this.setState({message})
+      };
+      const result = await doProcess(post,messageHandler);
+      this.setState({meta:result.meta,post:result.post,loading:false,message:''});
+      console.log(result);
     } catch (err) {
       console.error(err);
       this.setState({post,meta:null,loading:false,message:''});
     }
   };
   
+  handleExampleSelected = (example) => {
+    this.setState({post:example});
+  };
+  
+  handlePostChanged = (post) => {
+    this.setState({post});
+  };
+  
   render() {
     const {post,loading,message,meta,preview} = this.state;
     
     return (
-      <div className="container">
-        <div>
-          <h3>Workshop Editor</h3>
-        </div>
+      <div className="container-fluid">
         <div className="row">
           <div className="col-sm" >
             {
               post && meta && preview ?
                 <Preview post={post} meta={meta} />
               :
-                <EditorContainer post={post} onPublish={this.handlePostPublish}/>
+                <div>
+                  <ExamplesComponent onSelect={this.handleExampleSelected} />
+                  <EditorContainer post={post} onPublish={this.handlePostPublish} onChange={this.handlePostChanged}/>
+                </div>
             }
           </div>
           <div className="col-sm">
