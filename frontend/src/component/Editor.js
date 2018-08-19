@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PostEditor from '../component/PostEditor';
-import MetaViewer from '../component/MetaViewer';
+import MetaPanel from '../component/MetaPanel';
 const Modal = require('react-bootstrap-modal');
 const Loader = require('react-loader');
 
@@ -14,7 +14,7 @@ class Editor extends Component {
         </div>
         <div className="row">
           <div className="col-sm"><PostEditor onChange={this.handleEditorChanged} /></div>
-          <div className="col-sm"><MetaViewer post={post} meta={meta}/></div>
+          <div className="col-sm"><MetaPanel post={post} meta={meta}/></div>
         </div>
         <div className="row">
           (

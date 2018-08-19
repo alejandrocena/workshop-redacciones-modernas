@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Editor from '../component/Editor';
-const doProcess = require('../lib/process');
+import EditorContainer from './Editor';
+import Preview from "../component/Preview";
+import {doProcess} from '../lib/process';
 
 
 const EMPTY_NEWS = {title:'',dropline:'',paragraphs:[]};
@@ -47,12 +48,12 @@ class WorkshopEditor extends Component {
   
   render() {
     const {post,loading,message,meta,preview} = this.state;
-    const isValid = isValid(post);
+    const valid = isValid(post);
     
     if(isValid && meta && preview) {
-      <Editor post={post} loading={loading} message={message} meta={meta} preview={preview} isValid={isValid}/>;
+     return <EditorContainer post={post} loading={loading} message={message} meta={meta} preview={preview} isValid={valid}/>;
     } else {
-      <Editor post={post} loading={loading} message={message} meta={meta} preview={preview} isValid={isValid}/>;
+      return <Preview post={post} meta={meta} />;
     }
     
     

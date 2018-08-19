@@ -1,5 +1,5 @@
 
-const Sentiment = {
+export const Sentiment = {
   extract: text => {
     return fetch('http://localhost:5000/content/sentiment', {method: 'POST', body: JSON.stringify({text}),headers:{'Content-Type': 'application/json'}})
       .then(res => res.json())
@@ -8,7 +8,7 @@ const Sentiment = {
   },
 };
 
-const Entity = {
+export const Entity = {
   extract: text => {
     return fetch('http://localhost:5000/content/entity/extract', {method: 'POST', body: JSON.stringify({text}),headers:{'Content-Type': 'application/json'}})
       .then(res => res.json())
@@ -24,7 +24,7 @@ const Entity = {
 };
 
 
-const Category = {
+export const Category = {
   guess: text => {
     return fetch('http://localhost:5000/content/category/guess', {method: 'POST', body: JSON.stringify({text}),headers:{'Content-Type': 'application/json'}})
       .then(res => res.json())
@@ -32,15 +32,3 @@ const Category = {
       .then(response => console.log('Success:', response));
   }
 };
-
-const Backend = {
-  Category,
-  Entity,
-  Sentiment
-};
-
-
-
-
-
-module.exports = Backend;

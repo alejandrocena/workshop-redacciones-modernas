@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MetaViewer ({post,meta={}}){
+function MetaPanel({post,meta={}}){
   return (
     <div>
       <h3>Meta Viewer</h3>
@@ -10,4 +10,4 @@ function MetaViewer ({post,meta={}}){
 }
 
 
-export default MetaViewer;
+export default MetaPanel;

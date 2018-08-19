@@ -1,11 +1,8 @@
-import Backend from './backend';
+import {Category} from './backend';
 
-const doProcess = async (post,onMessage=()=>{}) => {
-  Backend.Category
+export const doProcess = async (post,onMessage=()=>{}) => {
+
 
 
 
 };
-
-
-module.exports = doProcess;
