@@ -1,64 +1,48 @@
 import React, { Component } from 'react';
-import Editor from '../component/Editor';
-const doProcess = require('../lib/process');
+import PostEditor from "../component/PostEditor";
 
-
-const EMPTY_NEWS = {title:'',dropline:'',paragraphs:[]};
-
-const isValid = (post) => {
-  return true;
+const isValid =  (post={}) => {
+  const {title,dropline,paragraphs} = post;
+  return title.length > 20 && dropline > 20 && paragraphs.length > 1
 };
 
 class EditorContainer extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {
-      post:EMPTY_NEWS,
-      loading:false,
-      message:'',
-      meta: null,
-      preview:false
-    };
-    this.handleEditorChanged.bind(this);
+    const {post} = props;
+    this.state = post;
+    this.handleTitleChanged.bind(this);
+    this.handleDroplineChanged.bind(this);
+    this.handleParagraphsChanged.bind(this);
   }
   
-  handleEditorChanged = (post) => {
-    this.setState({post});
+  handleTitleChanged = (title) => {
+    this.setState({title});
   };
   
-  onProcessHandler = async () => {
-    const post = this.state;
-    this.setState({...post,loading:true,message:'loading...'});
-    try {
-      const meta = await doProcess(
-        post,
-        (message) => {
-          this.setState({message})
-        }
-      );
-      this.setState({...post,meta,loading:false,message:''});
-      console.log(meta);
-    } catch (err) {
-      console.error(err);
-      this.setState({...post,meta:null,loading:false,message:''});
-    }
+  handleDroplineChanged = (dropline) => {
+    this.setState({dropline});
   };
   
+  handleParagraphsChanged = (paragraphs) => {
+    this.setState({paragraphs});
+  };
   
   render() {
-    const {post,loading,message,meta} = this.state;
+    const post = this.state;
     const {onPublish=()=>{}} = this.props;
-    const isValid = isValid(post);
+    const valid = isValid(post);
+    
     return (
       <div>
-        <Editor post={post} loading={loading} message={message} meta={meta} isValid={isValid}/>
-        (
-          (isValid && meta && post) ?
-            <button onClick={() => onPublish({post,meta})}>Publish</button>
+        <PostEditor post={post} onTitleChange={this.handleTitleChanged} onDrolpineChange={this.handleDroplineChanged} onParagraphChange={this.handleParagraphsChanged} />
+        {
+          valid ?
+            <button className="btn btn-success" onClick={() => onPublish(post)}>Publish</button>
           :
             <button className="btn btn-danger" disabled>Publish</button>
-        )
+        }
       </div>
     )
   }

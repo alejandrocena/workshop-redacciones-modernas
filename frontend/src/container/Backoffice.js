@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import {doProcess} from '../lib/process';
+import MetaPanel from "../component/MetaPanel";
 import EditorContainer from './Editor';
 import Preview from "../component/Preview";
-import {doProcess} from '../lib/process';
+const Modal = require('react-bootstrap-modal');
+const Loader = require('react-loader');
 
 
 const EMPTY_NEWS = {title:'',dropline:'',paragraphs:[]};
-
-const isValid = (post) => {
-  return true;
-};
 
 class WorkshopEditor extends Component {
   
@@ -21,16 +20,11 @@ class WorkshopEditor extends Component {
       meta: null,
       preview:false
     };
-    this.handleEditorChanged.bind(this);
+    this.handlePostPublish.bind(this);
   }
   
-  handleEditorChanged = (post) => {
-    this.setState({post});
-  };
-  
-  onProcessHandler = async () => {
-    const post = this.state;
-    this.setState({...post,loading:true,message:'loading...'});
+  handlePostPublish = async (post) => {
+    this.setState({post,loading:true,message:'loading'});
     try {
       const meta = await doProcess(
         post,
@@ -38,25 +32,44 @@ class WorkshopEditor extends Component {
           this.setState({message})
         }
       );
-      this.setState({...post,meta,loading:false,message:''});
+      this.setState({meta,loading:false,message:''});
       console.log(meta);
     } catch (err) {
       console.error(err);
-      this.setState({...post,meta:null,loading:false,message:''});
+      this.setState({post,meta:null,loading:false,message:''});
     }
   };
   
   render() {
     const {post,loading,message,meta,preview} = this.state;
-    const valid = isValid(post);
     
-    if(isValid && meta && preview) {
-     return <EditorContainer post={post} loading={loading} message={message} meta={meta} preview={preview} isValid={valid}/>;
-    } else {
-      return <Preview post={post} meta={meta} />;
-    }
-    
-    
+    return (
+      <div className="container">
+        <div>
+          <h3>Workshop Editor</h3>
+        </div>
+        <div className="row">
+          <div className="col-sm">
+            {
+              post && meta && preview ?
+                <Preview post={post} meta={meta} />
+              :
+                <EditorContainer post={post} onPublish={this.handlePostPublish}/>
+            }
+          </div>
+          <div className="col-sm">
+            { meta ? <MetaPanel post={post} meta={meta}/> : "" }
+          </div>
+        </div>
+        
+        <Modal show={loading} aria-labelledby="ModalHeader" >
+          <Modal.Header> <Modal.Title id='ModalHeader'>${message}</Modal.Title></Modal.Header>
+          <Modal.Body>
+            <Loader type="ThreeDots" color="#222" height={200} width={200} />
+          </Modal.Body>
+        </Modal>
+      </div>
+    );
   }
 }
 

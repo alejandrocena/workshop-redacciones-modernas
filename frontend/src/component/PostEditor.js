@@ -4,8 +4,6 @@ class PostEditor extends Component {
   
   constructor(props){
     super(props);
-    const {title,dropline,pagraphs=[]} = props;
-    this.state = {title,dropline,pagraphs};
     this.handleTitleChanged.bind(this);
     this.handleDroplineChanged.bind(this);
     this.handleBodyChanged.bind(this);
@@ -30,15 +28,44 @@ class PostEditor extends Component {
   };
   
   render() {
-    const {title,dropline,pagraphs=[]} = this.props;
+    const {post={}} = this.props;
+    const {title,dropline,paragraphs=[]} = post;
   
     return (
-      <div>
-        <h3>Post Editor</h3>
-        <input type='text' onChange={(event) => this.handleTitleChanged(event.target.value)} value={title}/>
-        <input type='text' onChange={(event) => this.handleDroplineChanged(event.target.value)} value={dropline}/>
-        <textarea onChange={(event) => this.handleBodyChanged(event.target.value.split('/n'))}>${pagraphs.join('/n')}}</textarea>
-      </div>
+      <form>
+        <div className="form-group">
+          <label htmlFor="title">Title</label>
+          <input
+            type='text'
+            className="form-control"
+            id="title"
+            placeholder="Enter title"
+            onChange={(event) => this.handleTitleChanged(event.target.value)}
+            value={title}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="dropline">Dropline</label>
+          <input
+            type='text'
+            className="form-control"
+            id="dropline"
+            placeholder="Enter Dropline"
+            onChange={(event) => this.handleDroplineChanged(event.target.value)}
+            value={dropline}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="body">Dropline</label>
+          <textarea
+            id="body"
+            className="form-control"
+            placeholder="Enter Body"
+            onChange={(event) => this.handleBodyChanged(event.target.value.split('/n'))}
+            value={paragraphs.join('/n')}
+          />
+        </div>
+      </form>
     );
   }
 }
