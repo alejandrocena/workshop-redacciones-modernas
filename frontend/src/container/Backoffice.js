@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {doProcess} from '../lib/process';
 import MetaPanel from "../component/MetaPanel";
+import Loader from 'react-loader-spinner'
 import ExamplesComponent from "../component/Examples";
 import EditorContainer from './Editor';
 import Preview from "../component/Preview";
 const Modal = require('react-bootstrap-modal');
-const Loader = require('react-loader');
 
 
 const EMPTY_NEWS = {title:'',dropline:'',paragraphs:[]};
@@ -24,21 +24,23 @@ class WorkshopEditor extends Component {
     this.handlePostPublish.bind(this);
     this.handleExampleSelected.bind(this);
     this.handlePostChanged.bind(this);
+    this.process.bind(this);
   }
   
-  handlePostPublish = async (post) => {
-    this.setState({post,loading:true,message:'loading'});
+  process = async post => {
     try {
-      const messageHandler = (message) => {
-        this.setState({message})
-      };
-      const result = await doProcess(post,messageHandler);
-      this.setState({meta:result.meta,post:result.post,loading:false,message:''});
+      const result = await doProcess(post, console.info);
+      this.setState({meta:result.meta,post:result.post,loading:false});
       console.log(result);
     } catch (err) {
       console.error(err);
       this.setState({post,meta:null,loading:false,message:''});
     }
+  };
+  
+  handlePostPublish = async (post) => {
+    this.setState({loading:true});
+    setTimeout(() => this.process(post));
   };
   
   handleExampleSelected = (example) => {
@@ -50,7 +52,7 @@ class WorkshopEditor extends Component {
   };
   
   render() {
-    const {post,loading,message,meta,preview} = this.state;
+    const {post,loading,meta,preview} = this.state;
     
     return (
       <div className="container-fluid">
@@ -58,7 +60,7 @@ class WorkshopEditor extends Component {
           <div className="col-sm" >
             {
               post && meta && preview ?
-                <Preview post={post} meta={meta} />
+                  <Preview post={post} meta={meta} />
               :
                 <div>
                   <ExamplesComponent onSelect={this.handleExampleSelected} />
@@ -70,13 +72,18 @@ class WorkshopEditor extends Component {
             { meta ? <MetaPanel post={post} meta={meta}/> : "" }
           </div>
         </div>
-        
-        <Modal show={loading} aria-labelledby="ModalHeader" >
-          <Modal.Header> <Modal.Title id='ModalHeader'>${message}</Modal.Title></Modal.Header>
-          <Modal.Body>
-            <Loader type="ThreeDots" color="#222" height={200} width={200} />
-          </Modal.Body>
-        </Modal>
+        {
+            loading
+          ?
+            <Modal show={true} aria-labelledby="ModalHeader" >
+              <Modal.Header> <Modal.Title id='ModalHeader'>Loading...</Modal.Title></Modal.Header>
+              <Modal.Body>
+                <Loader type="ThreeDots" color="#fafafa" height={200} width={200} />
+              </Modal.Body>
+            </Modal>
+          :
+              ""
+        }
       </div>
     );
   }
