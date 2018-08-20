@@ -12,6 +12,18 @@ server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser({ mapParams: true }));
 
+
+server.use(
+  function crossOrigin(req,res,next){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Origin", req.headers.origin);
+    return next();
+  }
+);
+
 /**
  * Loading endpoints
  */
@@ -25,6 +37,12 @@ server.get('/ping', function (req, res, next) {
   res.send('pong');
   logger.log('info','pong');
   return next();
+});
+
+server.opts('*', (req, res, next) => {
+  res.header('Access-Control-Allow-Headers', 'Accept, Content-Type, X-Requested-With');
+  res.send(200);
+  next();
 });
 
 if (module === require.main) {

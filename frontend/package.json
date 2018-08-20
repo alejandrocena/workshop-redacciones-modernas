@@ -4,8 +4,10 @@
   "description": "Frontend Service for https://mediaparty2018.sched.com/event/Fzbc/herramientas-de-ia-para-redacciones-modernas",
   "main": "server.js",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "bootstrap": "^4.1.3",
+    "immutable": "^3.8.2",
     "react": "^16.4.2",
     "react-bootstrap-modal": "^4.1.1",
     "react-dom": "^16.4.2",
