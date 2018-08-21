@@ -112,9 +112,4 @@ const ScoreMagnitude = ({score,magnitude})=> {
   )
 };
 
-const ParagraphMeta = ()=>{
-  return "paragraphs";
-};
-
-
 export default MetaPanel;

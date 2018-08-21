@@ -1,14 +1,17 @@
 import React from 'react';
 
-function Preview (props){
+function Preview ({post,meta}){
   return (
     <div>
-      <h1>Title</h1>
-      <h2>Dropline</h2>
-      <p>parrafo 1</p>
-      <p>parrafo 2</p>
-      <p>parrafo 3</p>
-      <p>parrafo 4</p>
+      <h1>{post.title}</h1>
+      <p>
+        <b>Tags: </b> {post.tags.map( tag => <span className="badge badge-info">{tag}</span>)}<br/>
+          <b>Categories: </b> {post.categories.map( category => <span className="badge badge-info">{category}</span>)}
+      </p>
+      <img width={'100%'} src={post.image} />
+      <p className="lead">{post.dropline}</p>
+      <hr className="my-2" />
+      {post.paragraphs.map( paragraph => <p>{paragraph}</p>)}
     </div>
   );
 }

@@ -49,7 +49,7 @@ class WorkshopEditor extends Component {
   };
   
   handlePostChanged = (post) => {
-    this.setState({post});
+    this.setState({post,meta:null});
   };
   
   handleTogglePreview = () => {
@@ -70,7 +70,7 @@ class WorkshopEditor extends Component {
           <div className="col-sm">
             {
               meta ?
-                <div>
+                <div style={{'margin-top':'5px'}}>
                   <Button onClick={this.handleTogglePreview} color="success" style={{'width':'100%'}}>Preview</Button>
                   <MetaPanel post={post} meta={meta}/>
                 </div>
@@ -90,7 +90,7 @@ class WorkshopEditor extends Component {
   
         {
           post && meta ?
-            <Modal isOpen={post && meta && preview} toggle={this.handleTogglePreview}>
+            <Modal isOpen={post && meta && preview} size={'lg'} toggle={this.handleTogglePreview}>
               <ModalHeader>Preview</ModalHeader>
               <ModalBody>
                 <Preview post={post} meta={meta}/>
