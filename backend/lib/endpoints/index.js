@@ -1,7 +1,7 @@
 module.exports = [
   require('./content-category'),
   require('./content-entity'),
-  require('./content-image'),
+  require('./content-tags'),
   require('./content-sentiment'),
   require('./content-similarity'),
 ];

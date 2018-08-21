@@ -1,6 +1,3 @@
+const ImagesMock = require('./images');
 
-const Tags = [
-
-];
-
-module.exports = Tags;
+module.exports = ImagesMock.keys();

@@ -44,7 +44,7 @@ class WorkshopEditor extends Component {
   };
   
   handleExampleSelected = (example) => {
-    this.setState({post:example});
+    this.setState({post:example,meta:null});
   };
   
   handlePostChanged = (post) => {

@@ -22,6 +22,7 @@
     "@google-cloud/language": "^1.2.0",
     "@google-cloud/vision": "^0.21.0",
     "fast-levenshtein": "^2.0.6",
+    "immutable": "^3.8.2",
     "nconf": "^0.10.0",
     "restify": "^7.2.1"
   }

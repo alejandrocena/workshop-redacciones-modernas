@@ -1,15 +1,14 @@
 
 export const Examples = [
   {
-    title:'Trump’s lawyers prepare to fight subpoena all the way to the Supreme Court',
-    dropline: 'Rudolph W. Giuliani, President Trump’s lead lawyer for the ongoing Russia probe, said Wednesday that he is still awaiting a response from special counsel Robert S. Mueller III to the Trump team’s latest terms for a presidential interview, which were made last week in a letter that argued against Trump’s having to answer questions about his possible obstruction of justice.',
-    paragraphs:[
-      'In the meantime, Trump’s lawyers are preparing to oppose a potential subpoena from Mueller for a Trump sit-down by drafting a rebuttal that could set off a dramatic fight in federal courts.',
-      '“We would move to quash the subpoena,” Giuliani said in an interview. “And we’re pretty much finished with our memorandum opposing a subpoena.”',
-      'Giuliani added that Trump’s attorneys are ready to “argue it before the Supreme Court, if it ever got there.”',
-      'In recent weeks, Giuliani said members of Trump’s team have “had conversations” with Emmet T. Flood, a White House lawyer working on issues related to the federal investigation. He said Flood “would have a big role to play here and would assert presidential privilege” but declined to say more about those discussions.',
-      'White House officials have privately said Flood has cautioned Trump and others about the unpredictability of a subpoena fight that could be decided by the Supreme Court. Such a case would be unprecedented. Independent counsel Kenneth W. Starr served President Bill Clinton with a subpoena to compel him to appear before a grand jury, but it was withdrawn after Clinton agreed to testify.',
-      'Mueller, who is heading the federal probe of Russian interference in the 2016 presidential campaign and of Trump’s conduct, has sought a presidential interview for months. The president’s lawyers and Mueller have not reached an agreement.',
+    title : 'First lady Melania Trump warns of ‘destructive and harmful’ side of social media',
+    dropline: 'As her husband continued to rip into his adversaries on Twitter, first lady Melania Trump on Monday warned that social media can be used in a “destructive and harmful” manner during remarks at a conference on preventing cyberbullying.',
+    paragraphs: [
+      '“In today’s global society, social media is an inevitable part of our children’s daily lives,” the first lady said. “It can be used in many positive ways but can also be destructive and harmful when used incorrectly.”',
+      'Her message was part of a broader initiative, Be Best, that her office launched in May on improving children’s well-being, including “the safe and responsible use of social media,” as she characterized it in Monday’s remarks.',
+      'Melania Trump made no mention of the president in her brief remarks at the outset of Monday’s conference in Rockville, Md. He had spent part of his morning taking fresh aim on Twitter at special counsel Robert S. Mueller III, calling him “disgraced and discredited.”',
+      'After the first lady’s speech, President Trump was back on Twitter, calling John Brennan “the worst CIA Director in our country’s history.”',
+      'The president’s use of Twitter to target his real and perceived enemies is well known. Only last week he prompted a new furor by referring to former White House aide Omarosa Manigault Newman as “that dog” — a term many found to be racist and misogynistic.'
     ]
   },
   {
@@ -40,35 +39,24 @@ export const Examples = [
     ]
   },
   {
-    title:'First ‘Comfort Women’ Day Honors Those Forced Into Brothels In WWII',
-    dropline: 'The Japanese army sexually abused some 200,000 South Korean women and girls during the war.',
+    title:'Sharknado, an inside joke that became a hit TV movie franchise, is officially dead',
+    dropline: 'Sharknado, which ended for good with the sixth and final movie on Sunday night, wasn’t even supposed to exist. As the ridiculous origin story goes, the term was actually a throwaway line in another Syfy movie, “Leprechaun’s Revenge.”',
     paragraphs:[
-      'People in South Korea and Taiwan unveiled monuments and staged protests on Tuesday to mark Japan’s wartime use of “comfort women”, a euphemism for girls and women forced to work in Japan’s wartime brothels.',
-      'In South Korea, a new monument was unveiled as part of its first “Memorial Day for Japanese Forces’ Comfort Women Victims,” which threatens to exacerbate a sensitive diplomatic issue with Japan, South Korea’s neighbor and a key ally of the United States in efforts to contain North Korea.',
-      '“My hope is that this issue will not lead to a diplomatic dispute between South Korea and Japan. I also do not think that this will be solved by a bilateral diplomatic solution,” South Korean President Moon Jae-in said in commemoration of the day.',
-      'Moon said the issue involves “the entire world” and human rights of women as a whole, and pledged the South Korean government will respect the women as the main parties of the issue, and pursue commemorative projects to restore their honor and dignity including discovery, preservation and propagation of records. ',
+      '“There’s this town in the movie that’s, I guess, being besieged by leprechauns . . . and somebody says: ‘Gosh, I hope we don’t go the way of that other town. They never recovered after the sharknado hit,’ ” writer Thunder Levin told Vice. “One of the execs at Syfy, that stuck with them and they thought, ‘Hey, we should make a movie called “Sharknado!” ’ ”',
+      'Thus, Syfy’s hit Sharknado franchise was born. In July 2013, the entertainment industry was stunned when the low-budget TV movie about a deadly shark tornado in Los Angeles — starring Ian Ziering and Tara Reid — took over social media on a random Thursday night. Tweets about #Sharknado streamed in at a rate of 5,000 per minute. Celebrities joined in the gleeful chaos.',
+      'The movie made little to no sense — and no one cared. It may have started as an inside joke, but it became a phenomenon. The network scheduled the film to re-air multiple times, and it racked up millions of viewers. Scientists weighed in on whether a sharknado could really happen. The stars were swamped with interview requests. Syfy quickly ordered a sequel. And then four more movies.',
+      'The final installment of the “brilliantly stupid” franchise, titled “The Last Sharknado: It’s About Time,” went just as you might expect Sunday night. Ziering, who was initially so embarrassed about the first film that he refused to tell anyone about it, reprised his role as shark hunter Fin. Reid, who recently made headlines for a troubling viral interview to promote the movie, returned as his wife, April.'
     ]
   },
   {
-    title:'Australian Sex Abuse Victim Reaches Landmark Settlement With Catholic Church',
-    dropline: '74-year-old Paul Bradshaw, once called a liar for his claims, says he can now die happy.',
+    title:'Alligator Kills Woman Walking Dog In South Carolina: Police',
+    dropline: 'A woman died Monday morning in a suspected alligator attack on Hilton Head Island in South Carolina, police said.',
     paragraphs:[
-      'A 74-year-old man with terminal cancer said on Thursday he could die happy after reaching a 1 million Australian dollar ($727,000) landmark settlement against a Catholic religious order for sexual abuse he suffered in Australia more than 50 years ago.',
-      'Paul Bradshaw was to testify on Thursday in the Western Australia state District Court about his ill treatment at Castledare Junior Orphanage and Clontarf Orphanage run by the Irish Chritian Brothers order in the 1950s and ’60s.',
-      'But instead, a settlement was reached with the Trustees of the Christian Brothers for the abuse he suffered at the hands of Brothers Lawrence Murphy, Bruno Doyle and Christopher Angus, who are all dead.',
-      'Bradshaw is the first victim to claim damages for historical child sex abuse under laws that recently came into effect in Western Australia, removing the time limit for such cases.',
-      'He cried outside court, explaining his 60-year fight and said he was relieved his family would receive his compensation money. He said doctors had advised that he only had six months to live.',
-    ]
-  },
-  {
-    title:'Barack Obama Reacts To Aretha Franklin’s Death',
-    dropline: 'The Queen of Soul performed at the former president’s first inauguration in 2009.',
-    paragraphs:[
-      'Former President Barack Obama and first lady Michelle Obama, longtime fans of Aretha Franklin, paid their respects to the Queen of Soul following her death.',
-      '“Aretha helped define the American experience,” the Obamas said in a statement Thursday, after Franklin’s death at age 76 from pancreatic cancer. “In her voice, we could feel our history, all of it and in every shade ― our power and our pain, our darkness and our light, our quest for redemption and our hard-won respect. She helped us feel more connected to each other, more hopeful, more human. And sometimes she helped us just forget about everything else and dance.”',
-      'The former president and first lady praised Franklin’s “compositions and unmatched musicianship.”',
-      '“Every time she sang,” they added, “we were all graced with a glimpse of the divine.”',
-      'Franklin performed at Obama’s first inauguration in 2009. Obama immediately named Franklin when she asked who should perform at his inauguration, former Obama staffer Alyssa Mastromonaco said.',
+      'The woman, identified as Cassandra Cline, 45, according to South Carolina’s The State, was walking her dog near a lagoon at Sea Pines Plantation when a large alligator apparently attacked her.',
+      '“She did not have the dog on a leash, and when she went to go retrieve the dog, the gator came out of the water, grabbed her by the arm and pulled her into the water,” a golf club employee, who does not wish to be identified, told HuffPost.',
+      '“When they arrived, fire personnel located the deceased woman … and recovered her body,” the Beaufort County Sheriff’s Office said in a press release. The cause of death is pending.',
+      'A maintenance man is said to have witnessed the attack, which was reportedly recorded on surveillance video. Authorities said the woman’s dog was not harmed.',
+      'Sam Chappalear of South Carolina’s Department of Natural Resources told The State that the alligator believed responsible for the attack was caught and euthanized.'
     ]
   },
   {
@@ -100,16 +88,6 @@ export const Examples = [
       'The decision from a three-judge panel is a preliminary victory for the American Civil Liberties Union, five civic groups and 17 Ohio Democratic voters who filed the lawsuit. More significantly, the decision is the first from any lower court after the Supreme Court punted on two major cases involving partisan gerrymandering in June. Allowing the case to move forward is a small encouraging early sign for gerrymandering opponents, signaling that the Supreme Court’s June decisions haven’t closed off the courts to hearing gerrymandering claims.',
       'Republicans controlled Ohio’s redistricting process in 2011 and drew the state’s congressional map to their advantage. In each congressional election this decade, Republicans have won the same 12 of Ohio’s 16 U.S. House seats, even though President Barack Obama carried the state in 2012 and the GOP share of the statewide congressional vote has fluctuated between 51 and 59 percent. The Brennan Center for Justice estimates partisan gerrymandering in Ohio has yielded two to three additional seats for the GOP in Congress. The plaintiffs want to have the court strike down Ohio’s current congressional map and get a new one in place for the 2020 election.',
       'In June, the Supreme Court unanimously declined to step in and set a limit on when partisan gerrymandering goes so far that it violates the U.S. Constitution. It sent a challenge to Wisconsin’s Assembly map back to a lower court for further review, saying that voters could only bring a partisan gerrymandering challenge to the specific district they live in, not an entire map.',
-    ]
-  },
-  {
-    title:'These Are The Chilling Stories Of Abuse Covered Up By The Catholic Church',
-    dropline: 'A Pennsylvania grand jury identified more than 300 alleged “predator priests.” Here are just some of the stories.',
-    paragraphs:[
-      'For decades, stories about clerical sexual abuse committed by Pennsylvania Catholic priests were reportedly locked away in the church’s secret archives.',
-      'These old secrets exploded into the light Tuesday with the publication of a grand jury report into six of Pennsylvania’s eight Roman Catholic dioceses.',
-      'The jurors’ 884-page report allowed Pennsylvania Catholics to finally grasp the extent of the abuse ― and cover-up ― in six dioceses: Allentown, Erie, Greensburg, Harrisburg, Pittsburgh and Scranton. Over the course of two years, jurors identified 301 “predator priests” and more than 1,000 victims.',
-      'Jurors heard stories of boys and girls being groped. They heard about cases of kids becoming victims of child pornography, being made to masturbate with assailants, and being raped orally, vaginally and anally.'
     ]
   }
 ];

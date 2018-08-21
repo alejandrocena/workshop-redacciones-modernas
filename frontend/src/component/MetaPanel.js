@@ -5,38 +5,48 @@ function MetaPanel(props) {
   return (
     <div className="panel panel-default">
       <div className="panel-body">
+        <b>Media:</b>
+        <MediaMeta post={post} meta={meta} />
         <b>Tags:</b>
         <TagsMeta post={post} meta={meta} />
         <hr/>
         <b>Categories:</b>
         <CategoryMeta post={post} meta={meta} />
         <hr/>
+        <b>Title Meta:</b>
+        <TitleMeta post={post} meta={meta} />
       </div>
     </div>
   );
 }
 
-/*
- 
- <TitleMeta post={post} meta={meta} />
-        <hr/>
-      <DroplineMeta post={post} meta={meta} />
-        <hr/>
-      <ParagraphMeta post={post} meta={meta} />
-        <hr/>
-      <PostMeta post={post} meta={meta} />
- 
-  
- */
-
-
-function TagsMeta ({post}) {
-  const {tags} = post;
+function TagsMeta (props) {
+  const {meta:{dropline:{entity_sentiment}}} = props;
   return (
     <ul className="list-group">
-      {tags.map((tag,index) => {
-        return <li key={index} className="list-group-item"><span className="badge">{tag}</span></li>
-      })}
+      <ul className="list-group">
+        {entity_sentiment.map((entity,index) => {
+          return <li key={index} className="list-group-item">
+            <span className="badge">{entity.name}</span>
+            <ScoreMagnitude score={entity.sentiment.score} magnitude={entity.sentiment.magnitude}/>
+          </li>
+        })}
+      </ul>
+    </ul>
+  )
+};
+
+function MediaMeta (props) {
+  const {meta:{images}} = props;
+  return (
+    <ul className="list-group">
+      <ul className="list-group">
+        {images.map((image,index) => {
+          return <li key={index} className="list-group-item">
+            <img src={image} height={200}/>
+          </li>
+        })}
+      </ul>
     </ul>
   )
 };
@@ -44,48 +54,62 @@ function TagsMeta ({post}) {
 function CategoryMeta ({post}){
   const {categories} = post;
   return (
-    <ul className="list-group">
+    <ol className="list-group">
       {categories.map((category,index) => {
         return <li key={index} className="list-group-item"><span className="badge">{category}</span></li>
       })}
-    </ul>
+    </ol>
   )
 };
 
 const TitleMeta = (props)=>{
-  const {post:{title}} = props;
+  const {post:{title},meta:{title:{sentiment}}} = props;
   
   return (
     <div className="well well-sm">
       <small>{title}</small>
-      <div className="progress">
-        <div
-          className="progress-bar"
-          role="progressbar"
-          aria-valuenow="70"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          style="width:70%"
-        >
-          70%
-        </div>
-      </div>
+      <ol>
+        {sentiment.sentences.map( (sentence,index) => {
+          return <li key={index}>
+            <small>{sentence.text.content}</small>
+            <ScoreMagnitude score={sentence.sentiment.score} magnitude={sentence.sentiment.magnitude} />
+          </li>
+        })}
+      </ol>
     </div>
   )
 };
 
-const DroplineMeta = ({dropline},{dropline:{entity_sentiment}})=>{
-  const {} = entity_sentiment;
+function DroplineMeta (props) {
+  const {post:{dropline},meta:{dropline:{entity_sentiment}}} = props;
+  console.log(entity_sentiment);
+  
   return (
     <div className="well well-sm">
       <small>{dropline}</small>
       <ul className="list-group">
-        {[].map((tag,index) => {
-          return <li key={index} className="list-group-item"><span className="badge">{tag}</span></li>
+        {entity_sentiment.map((entity,index) => {
+          return <li key={index} className="list-group-item">
+            <span className="badge">{entity.name}</span>
+            <ScoreMagnitude score={entity.sentiment.score} magnitude={entity.sentiment.magnitude}/>
+          </li>
         })}
       </ul>
     </div>
   );
+};
+
+
+const ScoreMagnitude = ({score,magnitude})=> {
+  return (
+    ( -0.25 > score ) ?
+      <span className="badge badge-danger">negative</span>
+      :
+      ( score > 0.25) ?
+        <span className="badge badge-success">positive</span>
+        :
+        <span className="badge badge-info">neutral</span>
+  )
 };
 
 const ParagraphMeta = ()=>{
