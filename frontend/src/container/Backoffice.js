@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {doProcess} from '../lib/process';
 import MetaPanel from "../component/MetaPanel";
 import Loader from 'react-loader-spinner'
-import {Modal,ModalHeader,ModalBody} from 'reactstrap';
+import {Modal,ModalHeader,ModalBody,Button} from 'reactstrap';
 import ExamplesComponent from "../component/Examples";
 import EditorContainer from './Editor';
 import Preview from "../component/Preview";
@@ -24,6 +24,7 @@ class WorkshopEditor extends Component {
     this.handlePostPublish.bind(this);
     this.handleExampleSelected.bind(this);
     this.handlePostChanged.bind(this);
+    this.handleTogglePreview.bind(this);
     this.process.bind(this);
   }
   
@@ -51,6 +52,11 @@ class WorkshopEditor extends Component {
     this.setState({post});
   };
   
+  handleTogglePreview = () => {
+    const {preview} = this.state;
+    this.setState({preview:!preview});
+  };
+  
   render() {
     const {post,loading,meta,preview,message} = this.state;
     
@@ -62,7 +68,15 @@ class WorkshopEditor extends Component {
             <EditorContainer post={post} onPublish={this.handlePostPublish} onChange={this.handlePostChanged}/>
           </div>
           <div className="col-sm">
-            { meta ? <MetaPanel post={post} meta={meta}/> : "" }
+            {
+              meta ?
+                <div>
+                  <Button onClick={this.handleTogglePreview} color="success" style={{'width':'100%'}}>Preview</Button>
+                  <MetaPanel post={post} meta={meta}/>
+                </div>
+              :
+                ""
+            }
           </div>
         </div>
         <Modal isOpen={loading}>
@@ -74,12 +88,17 @@ class WorkshopEditor extends Component {
           </ModalBody>
         </Modal>
   
-        <Modal isOpen={post && meta && preview}>
-          <ModalHeader>Preview</ModalHeader>
-          <ModalBody>
-            <Preview post={post} meta={meta} />
-          </ModalBody>
-        </Modal>
+        {
+          post && meta ?
+            <Modal isOpen={post && meta && preview} toggle={this.handleTogglePreview}>
+              <ModalHeader>Preview</ModalHeader>
+              <ModalBody>
+                <Preview post={post} meta={meta}/>
+              </ModalBody>
+            </Modal>
+          :
+            ""
+        }
       </div>
     );
   }
