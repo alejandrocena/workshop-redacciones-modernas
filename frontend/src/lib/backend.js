@@ -32,7 +32,7 @@ export const Category = {
 export const Tags = {
   meta: tags => {
     const tags_str = tags.join(',');
-    return fetch('http://localhost:5000/content/tags/meta', {method: 'POST', tags: tags_str,headers:{'Content-Type': 'application/json'}})
+    return fetch('http://localhost:5000/content/tags/meta?tags=' + tags_str, {method: 'GET'})
       .then(res => res.json())
       .catch(error => console.error('Error:', error))
   }

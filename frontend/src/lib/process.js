@@ -20,16 +20,15 @@ export const doProcess = async (post,onMessage=()=>{}) => {
   onMessage('Loading Tags...');
   const tags = filtered_entities_sentiment.map( entity => entity.name);
   
+  onMessage('Loading Matching Image Tags...');
+  const tags_meta = await Tags.meta(tags);
+  const image = tags_meta.images.length > 0 ? tags_meta.images[0] : defaultImage ;
+  
   onMessage('Guessing Content Category...');
   const dropline_category_guessing = await Category.guess(post.paragraphs.join(''));
   
   onMessage('Loading Categories...');
   const categories = dropline_category_guessing.categories.map(category => category.name);
-  
-  onMessage('Loading Matching Image Tags...');
-  const images = await Tags.meta(tags);
-  
-  const image = images.length > 0 ? images[0] : defaultImage;
   
   post.tags = tags;
   post.categories = categories;
@@ -47,7 +46,7 @@ export const doProcess = async (post,onMessage=()=>{}) => {
       paragraphs: {
         category_guessing: dropline_category_guessing
       },
-      images
+      images : tags_meta.images
     }
   };
 };

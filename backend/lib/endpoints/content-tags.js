@@ -6,8 +6,8 @@ function endpoints(server) {
   /**
    * Gets Content image Guessing
    */
-  server.post('/content/tags/meta', async function (req, res, next) {
-    const tags = req.body.tags.split(',');
+  server.get('/content/tags/meta', async function (req, res, next) {
+    const tags = req.query.tags.split(',');
     const candidates=[];
     
     tags.map(tag => {
