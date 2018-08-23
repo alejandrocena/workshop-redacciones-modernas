@@ -4,6 +4,7 @@
   "description": "Backend service for https://mediaparty2018.sched.com/event/Fzbc/herramientas-de-ia-para-redacciones-modernas",
   "main": "server.js",
   "scripts": {
+    "start": "GOOGLE_APPLICATION_CREDENTIALS=/home/alejandro/Sources/smartmice/weeby/weeby-news-dev-7a54f1e2ca90.json node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
