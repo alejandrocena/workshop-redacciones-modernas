@@ -5,8 +5,6 @@ function MetaPanel(props) {
   return (
     <div className="panel panel-default">
       <div className="panel-body">
-        <b>Media:</b>
-        <MediaMeta post={post} meta={meta} />
         <b>Tags:</b>
         <TagsMeta post={post} meta={meta} />
         <hr/>
@@ -15,6 +13,8 @@ function MetaPanel(props) {
         <hr/>
         <b>Title Meta:</b>
         <TitleMeta post={post} meta={meta} />
+        <b>Media:</b>
+        <MediaMeta post={post} meta={meta} />
       </div>
     </div>
   );
