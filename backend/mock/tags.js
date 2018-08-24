@@ -1,3 +1,3 @@
 const ImagesMock = require('./images');
 
-module.exports = ImagesMock.keys();
+module.exports = [...ImagesMock.keys()];

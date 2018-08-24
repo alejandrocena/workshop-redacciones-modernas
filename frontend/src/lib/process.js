@@ -20,6 +20,9 @@ export const doProcess = async (post,onMessage=()=>{}) => {
   onMessage('Loading Tags...');
   const tags = filtered_entities_sentiment.map( entity => entity.name);
   
+  onMessage('Looking for Tags Similarity...');
+  const tags_similarities = await Tags.similarity(tags);
+  
   onMessage('Loading Matching Image Tags...');
   const tags_meta = await Tags.meta(tags);
   const image = tags_meta.images.length > 0 ? tags_meta.images[0] : defaultImage ;
@@ -46,7 +49,10 @@ export const doProcess = async (post,onMessage=()=>{}) => {
       paragraphs: {
         category_guessing: dropline_category_guessing
       },
-      images : tags_meta.images
+      images : tags_meta.images,
+      tags: {
+        similarities: tags_similarities
+      }
     }
   };
 };

@@ -3,5 +3,4 @@ module.exports = [
   require('./content-entity'),
   require('./content-tags'),
   require('./content-sentiment'),
-  require('./content-similarity'),
 ];

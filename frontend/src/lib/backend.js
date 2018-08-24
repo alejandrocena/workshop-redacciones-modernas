@@ -35,5 +35,16 @@ export const Tags = {
     return fetch('http://localhost:5000/content/tags/meta?tags=' + tags_str, {method: 'GET'})
       .then(res => res.json())
       .catch(error => console.error('Error:', error))
+  },
+  
+  similarity: async tags => {
+    const similarities = await Promise.all(
+      tags.map( tag =>
+        fetch('http://localhost:5000/content/tags/similarity?tag=' + tag, {method: 'GET'})
+          .then(res => res.json())
+          .catch(error => console.error('Error:', error))
+      )
+    );
+    return similarities.filter(elem => elem.length).map(elem => elem[0])
   }
 };

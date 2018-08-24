@@ -21,20 +21,30 @@ function MetaPanel(props) {
 }
 
 function TagsMeta (props) {
-  const {meta:{dropline:{entity_sentiment}}} = props;
+  const {meta:{dropline:{entity_sentiment},tags:{similarities}}} = props;
   return (
     <ul className="list-group">
       <ul className="list-group">
         {entity_sentiment.map((entity,index) => {
+          const similar = similarities.filter( elem => elem.original === entity.name);
           return <li key={index} className="list-group-item">
             <span className="badge">{entity.name}</span>
             <ScoreMagnitude score={entity.sentiment.score} magnitude={entity.sentiment.magnitude}/>
+            {similar.length ? similar.map((elem,index) => <SimilarTag key={index} {...elem} />) : ''}
           </li>
         })}
       </ul>
     </ul>
   )
 };
+
+function SimilarTag ({original,near,distance}) {
+  if(distance === 0 ) {
+    return <span className="badge badge-success"> Matched! </span>
+  } else {
+    return <span className="badge badge-dark"> Did you mean <b>"{near}"</b>?</span>;
+  }
+}
 
 function MediaMeta (props) {
   const {meta:{images}} = props;
